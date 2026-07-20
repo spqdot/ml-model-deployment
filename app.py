@@ -24,8 +24,10 @@ app = FastAPI(
 
 class SaleRecord(BaseModel):
     store_ID: int
+    day_of_week: int
+    nb_customers_on_day: int
     open: int
-    promo: int
+    promotion: int
     state_holiday: str
     school_holiday: int
 
@@ -59,7 +61,7 @@ def make_prediction(request: PredictionRequest):
     """
     Accept one or more sale records and return predictions.
 
-    - **records**: list of feature objects (store_ID, open, promo, state_holiday, school_holiday)
+    - **records**: list of feature objects (store_ID, day_of_week, nb_customers_on_day, open, promotion, state_holiday, school_holiday)
     - **model_name**: `linear_regression` | `random_forest` | `xgboost` (default: `xgboost`)
     """
     try:
