@@ -1,6 +1,4 @@
-// Replace with your deployed API URL (e.g. https://your-api.onrender.com)
-// For local development use: http://127.0.0.1:8000
-const API_BASE = "http://127.0.0.1:8000";
+const API_BASE = "https://ml-model-deployment-quk7.onrender.com";
 
 const form       = document.getElementById("prediction-form");
 const submitBtn  = document.getElementById("submit-btn");
