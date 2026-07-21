@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sales Prediction</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Sales Prediction</h1>
+    <p class="subtitle">Predict daily store sales using ML models</p>
+
+    <form id="prediction-form">
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="store_ID">Store ID</label>
+          <input type="number" id="store_ID" name="store_ID" min="1" value="1" required />
+        </div>
+
+        <div class="form-group">
+          <label for="day_of_week">Day of Week <span class="hint">(1 = Mon … 7 = Sun)</span></label>
+          <input type="number" id="day_of_week" name="day_of_week" min="1" max="7" value="1" required />
+        </div>
+
+        <div class="form-group">
+          <label for="nb_customers_on_day">Number of Customers</label>
+          <input type="number" id="nb_customers_on_day" name="nb_customers_on_day" min="0" value="500" required />
+        </div>
+
+        <div class="form-group">
+          <label for="open">Store Open</label>
+          <select id="open" name="open" required>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="promotion">Promotion Active</label>
+          <select id="promotion" name="promotion" required>
+            <option value="1">Yes</option>
+            <option value="0">No</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="state_holiday">State Holiday</label>
+          <select id="state_holiday" name="state_holiday" required>
+            <option value="0">None</option>
+            <option value="a">Public Holiday (a)</option>
+            <option value="b">Easter Holiday (b)</option>
+            <option value="c">Christmas (c)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="school_holiday">School Holiday</label>
+          <select id="school_holiday" name="school_holiday" required>
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="model_name">Model</label>
+          <select id="model_name" name="model_name">
+            <option value="xgboost" selected>XGBoost</option>
+            <option value="random_forest">Random Forest</option>
+            <option value="linear_regression">Linear Regression</option>
+          </select>
+        </div>
+      </div>
+
+      <button type="submit" id="submit-btn">Predict Sales</button>
+    </form>
+
+    <div id="result" class="result hidden">
+      <h2>Prediction Result</h2>
+      <div class="result-card">
+        <div class="result-value" id="result-value">—</div>
+        <div class="result-meta" id="result-meta"></div>
+      </div>
+    </div>
+
+    <div id="error" class="error hidden">
+      <p id="error-message"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

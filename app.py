@@ -6,6 +6,7 @@ Start the server:
 """
 
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Optional
 
@@ -17,6 +18,14 @@ app = FastAPI(
     title="ML Model Deployment API",
     description="Predict sales using Linear Regression, Random Forest, or XGBoost.",
     version="1.0.0",
+)
+
+# Allow requests from any origin (update to your Vercel URL in production)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["GET", "POST"],
+    allow_headers=["Content-Type"],
 )
 
 
